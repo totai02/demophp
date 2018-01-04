@@ -1,0 +1,17 @@
+{
+  "name": "taitt",
+  "authors": [
+    "TaiTT <taitt@sandinh.net>"
+  ],
+  "description": "taitt",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
