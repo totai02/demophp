@@ -31,7 +31,13 @@ function inputGet($key)
 }
 
 
-function redirect($url, $status = 302) {
+function redirect($url, $status = 302)
+{
     header('Location: ' . str_replace(array('&', "\n", "\r"), array('&', '', ''), urlLink($url)), TRUE, $status);
     exit();
+}
+
+function assets_url($path = '')
+{
+    return HTTP_ROOT . 'resources/assets/' . $path;
 }

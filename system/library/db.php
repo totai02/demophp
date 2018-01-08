@@ -91,6 +91,32 @@ final class DB
         $this->query($sql);
     }
 
+    public function update($table, $data, $orRaw = ''){
+        $sql = "UPDATE " . DB_PREFIX . "$table SET ";
+
+        $list = array();
+
+        foreach ($data as $key => $item){
+            if(is_int($item)){
+                $item = (int)$item;
+            } elseif (is_float($item)) {
+                $item = (float)$item;
+            } else {
+                $item = $this->escape($item);
+            }
+
+            $list[] = "`$key` = '$item'";
+        }
+
+        $sql .= implode(', ', $list);
+
+        if($orRaw){
+            $sql .= $orRaw;
+        }
+
+        $this->query($sql);
+    }
+
     public function delete($table, $where){
         $sql = "DELETE FROM " . $table . " WHERE ";
         if (is_string($where)){

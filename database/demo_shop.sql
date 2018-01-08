@@ -1,234 +1,223 @@
--- phpMyAdmin SQL Dump
--- version 4.0.10.20
--- https://www.phpmyadmin.net
---
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 05, 2018 at 07:06 AM
--- Server version: 5.6.37-log
--- PHP Version: 5.6.31
+/*
+ Navicat Premium Data Transfer
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+ Source Server         : OpenServer
+ Source Server Type    : MySQL
+ Source Server Version : 50637
+ Source Host           : localhost:3306
+ Source Schema         : demo_shop
 
+ Target Server Type    : MySQL
+ Target Server Version : 50637
+ File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+ Date: 08/01/2018 18:30:11
+*/
 
---
--- Database: `demo_shop`
---
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_category`
---
-
-CREATE TABLE IF NOT EXISTS `tt_category` (
-  `category_id` int(11) NOT NULL,
+-- ----------------------------
+-- Table structure for tt_category
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_category`;
+CREATE TABLE `tt_category`  (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `description` text,
-  `image` varchar(0) DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `create_at` varchar(15) NOT NULL,
-  `update_at` varchar(15) NOT NULL,
-  PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `image` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `create_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `update_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`category_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of tt_category
+-- ----------------------------
+INSERT INTO `tt_category` VALUES (1, 0, 'Laptop', 'ok', 'data/base2.png', 1, '1512386860', '1512386860');
+INSERT INTO `tt_category` VALUES (2, 0, 'Mobile', 'dsf', 'data/base2.png', 1, '1512386860', '1512386860');
+INSERT INTO `tt_category` VALUES (3, 1, 'Phụ kiện', '<p>sdmmlsdf &aacute;dfemo</p>\r\n', '', 1, '1515410141', '1515410300');
 
---
--- Table structure for table `tt_order`
---
-
-CREATE TABLE IF NOT EXISTS `tt_order` (
+-- ----------------------------
+-- Table structure for tt_order
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_order`;
+CREATE TABLE `tt_order`  (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
-  `create_at` varchar(15) NOT NULL,
-  `update_at` varchar(15) NOT NULL,
-  `full_name` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) NOT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `create_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `update_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `full_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`order_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_order_product`
---
-
-CREATE TABLE IF NOT EXISTS `tt_order_product` (
+-- ----------------------------
+-- Table structure for tt_order_product
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_order_product`;
+CREATE TABLE `tt_order_product`  (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `size_id` int(11) NOT NULL,
   `count` int(5) NOT NULL,
-  `price` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `price` decimal(10, 2) NOT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_product`
---
-
-CREATE TABLE IF NOT EXISTS `tt_product` (
+-- ----------------------------
+-- Table structure for tt_product
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_product`;
+CREATE TABLE `tt_product`  (
   `product_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text,
-  `tag` varchar(500) DEFAULT NULL,
-  `image` varchar(0) DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `viewed` int(11) DEFAULT '0',
-  `create_at` varchar(15) NOT NULL,
-  `update_at` varchar(15) NOT NULL,
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `tag` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `image` varchar(0) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `price` decimal(10, 2) NOT NULL DEFAULT 0.00,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `viewed` int(11) DEFAULT 0,
+  `create_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `update_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`product_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_product_attribute`
---
-
-CREATE TABLE IF NOT EXISTS `tt_product_attribute` (
+-- ----------------------------
+-- Table structure for tt_product_attribute
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_product_attribute`;
+CREATE TABLE `tt_product_attribute`  (
   `product_id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `decription` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `decription` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_product_image`
---
-
-CREATE TABLE IF NOT EXISTS `tt_product_image` (
+-- ----------------------------
+-- Table structure for tt_product_image
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_product_image`;
+CREATE TABLE `tt_product_image`  (
   `product_id` int(11) NOT NULL,
-  `image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_product_sale`
---
-
-CREATE TABLE IF NOT EXISTS `tt_product_sale` (
+-- ----------------------------
+-- Table structure for tt_product_sale
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_product_sale`;
+CREATE TABLE `tt_product_sale`  (
   `product_id` int(11) NOT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
-  `from_at` varchar(255) DEFAULT NULL,
-  `to_at` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `price` decimal(10, 2) DEFAULT NULL,
+  `from_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `to_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`product_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_product_size`
---
-
-CREATE TABLE IF NOT EXISTS `tt_product_size` (
+-- ----------------------------
+-- Table structure for tt_product_size
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_product_size`;
+CREATE TABLE `tt_product_size`  (
   `product_id` int(11) NOT NULL,
   `size_id` int(11) NOT NULL,
-  `count` int(5) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `count` int(5) NOT NULL DEFAULT 0
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_product_to_category`
---
-
-CREATE TABLE IF NOT EXISTS `tt_product_to_category` (
+-- ----------------------------
+-- Table structure for tt_product_to_category
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_product_to_category`;
+CREATE TABLE `tt_product_to_category`  (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_setting`
---
-
-CREATE TABLE IF NOT EXISTS `tt_setting` (
+-- ----------------------------
+-- Table structure for tt_setting
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_setting`;
+CREATE TABLE `tt_setting`  (
   `setting_id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(32) NOT NULL,
-  `key` varchar(255) NOT NULL,
-  `value` text NOT NULL,
+  `code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `value` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `json` tinyint(1) NOT NULL,
-  PRIMARY KEY (`setting_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+  PRIMARY KEY (`setting_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- Dumping data for table `tt_setting`
---
+-- ----------------------------
+-- Records of tt_setting
+-- ----------------------------
+INSERT INTO `tt_setting` VALUES (32, 'config', 'config_name', 'TaiTT\'s Shop', 0);
+INSERT INTO `tt_setting` VALUES (33, 'config', 'config_owner', 'TaiTT', 0);
 
-INSERT INTO `tt_setting` (`setting_id`, `code`, `key`, `value`, `json`) VALUES
-(32, 'config', 'config_name', 'TaiTT''s Shop', 0),
-(33, 'config', 'config_owner', 'TaiTT', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_size`
---
-
-CREATE TABLE IF NOT EXISTS `tt_size` (
+-- ----------------------------
+-- Table structure for tt_size
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_size`;
+CREATE TABLE `tt_size`  (
   `size_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`size_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`size_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_user`
---
-
-CREATE TABLE IF NOT EXISTS `tt_user` (
+-- ----------------------------
+-- Table structure for tt_user
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_user`;
+CREATE TABLE `tt_user`  (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_group_id` int(11) NOT NULL,
-  `username` varchar(40) NOT NULL,
-  `password` varchar(40) NOT NULL,
+  `username` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `create_at` varchar(15) DEFAULT NULL,
-  `update_at` varchar(15) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `create_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `update_at` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`user_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- Dumping data for table `tt_user`
---
+-- ----------------------------
+-- Records of tt_user
+-- ----------------------------
+INSERT INTO `tt_user` VALUES (1, 1, 'taitt', 'a3f0bec59cebeb60553ec80bbfd5dfdf', 1, '1512386860', '1512386860');
+INSERT INTO `tt_user` VALUES (2, 2, 'truongnx', 'a3f0bec59cebeb60553ec80bbfd5dfdf', 1, '1512386860', '1512386860');
 
-INSERT INTO `tt_user` (`user_id`, `user_group_id`, `username`, `password`, `status`, `create_at`, `update_at`) VALUES
-(1, 1, 'taitt', 'a3f0bec59cebeb60553ec80bbfd5dfdf', 1, '1512386860', '1512386860');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tt_user_group`
---
-
-CREATE TABLE IF NOT EXISTS `tt_user_group` (
+-- ----------------------------
+-- Table structure for tt_user_group
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_user_group`;
+CREATE TABLE `tt_user_group`  (
   `user_group_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) NOT NULL,
-  `permission` text,
-  PRIMARY KEY (`user_group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `permission` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  PRIMARY KEY (`user_group_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- Dumping data for table `tt_user_group`
---
+-- ----------------------------
+-- Records of tt_user_group
+-- ----------------------------
+INSERT INTO `tt_user_group` VALUES (1, 'admin', '{\"access\":[\"common\\/dashboard\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\",\"user\\/user_list\"],\"modify\":[\"common\\/dashboard\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\",\"user\\/user_list\"]}');
+INSERT INTO `tt_user_group` VALUES (4, 'demo', '{\"access\":[\"common\\/dashboard\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\"],\"modify\":[\"common\\/dashboard\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\"]}');
 
-INSERT INTO `tt_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'admin', '{"access":["common\\/dashboard","user\\/user_group_form","user\\/user_group_list"],"modify":["common\\/dashboard","user\\/user_group_form","user\\/user_group_list"]}'),
-(2, 'demo', '{"access":["common\\/dashboard","setting\\/setting","user\\/user_group_form","user\\/user_group_list"]}');
+-- ----------------------------
+-- Table structure for tt_user_group_copy1
+-- ----------------------------
+DROP TABLE IF EXISTS `tt_user_group_copy1`;
+CREATE TABLE `tt_user_group_copy1`  (
+  `user_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `permission` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  PRIMARY KEY (`user_group_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- ----------------------------
+-- Records of tt_user_group_copy1
+-- ----------------------------
+INSERT INTO `tt_user_group_copy1` VALUES (1, 'admin', '{\"access\":[\"common\\/dashboard\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\"],\"modify\":[\"common\\/dashboard\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\"]}');
+INSERT INTO `tt_user_group_copy1` VALUES (2, 'demo', '{\"access\":[\"common\\/dashboard\",\"setting\\/setting\",\"user\\/user_group_form\",\"user\\/user_group_list\"]}');
+INSERT INTO `tt_user_group_copy1` VALUES (3, 'demo3', NULL);
+
+SET FOREIGN_KEY_CHECKS = 1;

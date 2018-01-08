@@ -2,7 +2,7 @@
     <section class="content">
         <div class="text-right tools">
             <button type="submit" form="form-user-group" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Lưu</button>
-            <a href="<?php echo urlLink('user/user_group_list') ?>" class="btn btn-default"><i class="fa fa-backward"></i>&nbsp;Quay lại</a>
+            <a href="<?php echo $cancel; ?>" class="btn btn-default"><i class="fa fa-backward"></i>&nbsp;Quay lại</a>
         </div>
         <form action="<?php echo $action ?>" method="post" enctype="multipart/form-data" class="form-horizontal" id="form-user-group">
             <?php if ($error_warning) { ?>

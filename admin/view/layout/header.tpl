@@ -17,10 +17,6 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="resources/assets/bower/admin-lte/dist/css/skins/_all-skins.min.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="resources/assets/bower/morris.js/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="resources/assets/bower/jvectormap/jquery-jvectormap.css">
     <!-- Date Picker -->
     <link rel="stylesheet" href="resources/assets/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <!-- Daterange picker -->
@@ -101,7 +97,8 @@
                 <li><a href="<?php echo urlLink('setting/setting') ?>"><i class="fa fa-cogs"></i> <span>Settings</span></a>
                 </li>
                 <li class="header">USER</li>
-                <li><a href="#"><i class="fa fa-user-plus"></i> <span>Add user</span></a></li>
+                <li><a href="<?php echo urlLink('user/user_group_list');?>"><i class="fa fa-users"></i> <span>User Group</span></a></li>
+                <li><a href="<?php echo urlLink('user/user_list');?>"><i class="fa fa-user"></i> <span>User List</span></a></li>
                 <li><a href="<?php echo urlLink('auth/logout'); ?>"><i class="fa fa-sign-out"></i>
                         <span>Logout</span></a></li>
             </ul>

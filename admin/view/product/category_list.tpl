@@ -16,19 +16,27 @@
                             <th class="text-center">
                                 <input type="checkbox" onclick="$('input[name^=\'selected\']').prop('checked', this.checked)" />
                             </th>
-                            <th class="text-left">Tên nhóm</th>
+                            <th class="text-left">Tên danh mục</th>
+                            <th class="text-center">Trạng thái</th>
                             <th class="text-right">Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($user_groups as $user_group) {?>
+                            <?php foreach ($categories as $category) {?>
                                 <tr>
                                     <td class="text-center" style="width: 1px">
-                                        <input type="checkbox" name="selected[]" value="<?php echo $user_group['user_group_id'] ?>" />
+                                        <input type="checkbox" name="selected[]" value="<?php echo $category['category_id'] ?>" />
                                     </td>
-                                    <td><?php echo $user_group['name'] ?></td>
+                                    <td><?php echo $category['name'] ?></td>
+                                    <td class="text-center">
+                                        <?php if($category['status']) { ?>
+                                            <i class="fa fa-check-circle text-success"></i>
+                                        <?php } else { ?>
+                                            <i class="fa fa-minus-circle text-danger"></i>
+                                        <?php } ?>
+                                    </td>
                                     <td class="text-right">
-                                        <a href="<?php echo $user_group['edit'] ?>" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Sửa </a>
+                                        <a href="<?php echo $category['edit'] ?>" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Sửa </a>
                                     </td>
                                 </tr>
                             <?php }?>

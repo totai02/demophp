@@ -10,6 +10,10 @@ return array(
         'auth/reset',
         'layout/footer',
         'layout/header',
-        'error/not_found'
-    )
+        'error/not_found',
+        'error/permission'
+    ),
+
+    'limit_admin' => 20,
+    'no_image'    => 'no_image.png'
 );

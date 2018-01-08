@@ -2,8 +2,8 @@
 
 global $loader, $user, $document, $config;
 
-$document->setTitle('Nhóm tài khoản');
-$document->setBreadcrumb('Nhóm tài khoản');
+$document->setTitle('Tài khoản');
+$document->setBreadcrumb('DS Tài khoản');
 
 $url = '';
 
@@ -17,38 +17,38 @@ if (isset($_GET['page'])) {
     $page = 1;
 }
 
-$loader->model('user/user_group');
+$loader->model('user/user');
 
-$data['user_groups'] = array();
+$data['users'] = array();
 
 $filter_data = array(
     'start' => ($page - 1) * $config->get('local.config.limit_admin'),
     'limit' => $config->get('local.config.limit_admin')
 );
 
-$user_group_total = getTotalUserGroup();
+$user_group_total = getTotalUser();
 
-$results = getUserGroups($filter_data);
+$results = getUsers($filter_data);
 
 foreach ($results as $result) {
-    $data['user_groups'][] = array(
-        'user_group_id' => $result['user_group_id'],
+    $data['users'][] = array(
+        'user_id' => $result['user_group_id'],
         'name'          => $result['name'],
-        'edit'          => urlLink('user/user_group_form', 'user_group_id=' . $result['user_group_id'] . $url)
+        'edit'          => urlLink('user/user_form', 'user_id=' . $result['user_id'] . $url)
     );
 }
 
-$data['add'] = urlLink('user/user_group_form' . $url);
-$data['delete'] = urlLink('user/user_group_delete' . $url);
+$data['add'] = urlLink('user/user_form' . $url);
+$data['delete'] = urlLink('user/user_delete' . $url);
 
 $pagination = new Pagination();
 $pagination->total = $user_group_total;
 $pagination->page = $page;
 $pagination->limit = $config->get('local.config.limit_admin');
-$pagination->url = urlLink('user/user_group_list', '&page={page}');
+$pagination->url = urlLink('user/user_list', '&page={page}');
 $data['pagination'] = $pagination->render();
 
 $data['header'] = $loader->controller('layout/header');
 $data['footer'] = $loader->controller('layout/footer');
 
-echo $loader->view('user/user_group_list', $data);
+echo $loader->view('user/user_list', $data);

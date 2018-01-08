@@ -206,24 +206,10 @@
 
 <!-- jQuery 3 -->
 <script src="resources/assets/bower/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="resources/assets/bower/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-</script>
 <!-- Bootstrap 3.3.7 -->
 <script src="resources/assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="resources/assets/bower/raphael/raphael.min.js"></script>
-<script src="resources/assets/bower//morris.js/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="resources/assets/bower/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="resources/assets/bower/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="resources/assets/bower/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="resources/assets/bower/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="resources/assets/bower/moment/min/moment.min.js"></script>
 <script src="resources/assets/bower/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -234,11 +220,9 @@
 <!-- Slimscroll -->
 <script src="resources/assets/bower/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="resources/assets/bower/fastclick/lib/fastclick.js"></script>
+<!--<script src="resources/assets/bower/fastclick/lib/fastclick.js"></script>-->
 <!-- AdminLTE App -->
 <script src="resources/assets/bower/admin-lte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="resources/assets/bower/admin-lte/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="resources/assets/bower/admin-lte/dist/js/demo.js"></script>
 </body>

@@ -1,2 +1,3 @@
 .idea
-resources/assets/bower
+resources/assets/bower/
+system/vendor/

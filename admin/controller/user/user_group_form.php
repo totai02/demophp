@@ -1,9 +1,16 @@
 <?php
+
 global $loader, $user, $document, $config;
 
 $document->setTitle('Nhóm tài khoản');
 $document->setBreadcrumb('Nhóm tài khoản');
 $document->setBreadcrumb('Thêm tài khoản');
+
+$url = '';
+
+if (isset($_GET['page'])) {
+    $url .= '&page=' . (int)$_GET['page'];
+}
 
 $loader->model('user/user_group');
 
@@ -19,11 +26,13 @@ if (isset($_GET['user_group_id'])) {
     }
 
     $data['is_edit'] = true;
-    $data['action'] = urlLink('user/user_group_form', 'user_group_id=' . $_GET['user_group_id']);
+    $data['action'] = urlLink('user/user_group_form', 'user_group_id=' . $_GET['user_group_id'] . $url);
 } else {
     $data['is_edit'] = false;
-    $data['action'] = urlLink('user/user_group_form');
+    $data['action'] = urlLink('user/user_group_form' . $url);
 }
+
+$data['cancel'] = urlLink('user/user_group_list' . $url);
 
 if (isMethod('post')) {
     $error = _validateForm();
@@ -37,7 +46,7 @@ if (isMethod('post')) {
 
         $document->setFlash('Bạn đã cập nhật thành công !');
 
-        redirect('user/user_group_list');
+        redirect('user/user_group_list' . $url);
     }
 }
 
@@ -52,7 +61,6 @@ if (isset($error['name'])) {
 } else {
     $data['error_name'] = '';
 }
-
 
 if (isset($_POST['name'])) {
     $data['name'] = $_POST['name'];
@@ -93,7 +101,7 @@ function _validateForm()
 
     $error = [];
 
-    if (!$user->hasPermission('modify', 'user_group_form')) {
+    if (!$user->hasPermission('modify', 'user/user_group_form')) {
         $error['warning'] = 'Bạn không có quyền chỉnh sửa trang này';
     }
 
