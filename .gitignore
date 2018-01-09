@@ -1,3 +1,5 @@
 .idea
 resources/assets/bower/
 system/vendor/
+/resources/upload/image/cache/
+/resources/upload/image/data/.ckfinder/
