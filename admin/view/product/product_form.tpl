@@ -60,9 +60,9 @@
                                         <a href="" id="thumb-image-<?php echo $image_row ?>" data-toggle="image" class="img-thumbnail img-bordered" style="display: inline-block;width: 100px;height: 100px;">
                                             <img src="<?php echo $product_image['thumb']; ?>" class="img-responsive" alt="" title="" data-placeholder="<?php echo $no_image; ?>"/>
                                         </a>
+                                        <input type="hidden" name="product_image[<?php echo $image_row ?>]" value="<?php echo $product_image['image']; ?>" id="input-image-<?php echo $image_row ?>"/>
                                         <hr/>
                                         <button type="button" onclick="$(this).parent().remove();" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash"></i>&nbsp;Xóa</button>
-                                        <input type="hidden" name="product_image[<?php echo $image_row ?>]" value="<?php echo $product_image['image']; ?>" id="input-image-<?php echo $image_row ?>"/>
                                     </div>
                                     <?php $image_row++; ?>
                                 <?php } ?>
