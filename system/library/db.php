@@ -42,33 +42,6 @@ final class DB
         }
     }
 
-//    public function select($table, $proj, $where = array()){
-//        $sql = "SELECT ";
-//        $listProj = array();
-//        if (is_array($proj)){
-//            foreach ($proj as $item){
-//                $listProj[] = "`$item`";
-//            }
-//        } else {
-//            $listProj[] = "*";
-//        }
-//
-//        $sql .= implode(', ', $listProj) . " FROM " . $table;
-//        if ($where){
-//            if (is_string($where)){
-//                $sql .= " WHERE " . $where;
-//            } elseif (is_array($where)){
-//                $sql .= " WHERE ";
-//                $listWhere = array();
-//                foreach ($where as $key => $item){
-//                    $listWhere[] = "`$key` = `$item`";
-//                }
-//                $sql .= implode(', ', $listWhere);
-//            }
-//        }
-//
-//    }
-
     public function insert($table, $data){
         $sql = "INSERT INTO " . DB_PREFIX . "$table SET ";
 

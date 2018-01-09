@@ -22,20 +22,25 @@ function getMenu()
         'sort_order' => 2
     ];
     $menu['product']['children'] = [
-        'category' => array(
+        'category'  => array(
             'text'       => 'Danh mục',
             'href'       => urlLink('product/category_list'),
             'sort_order' => 1,
         ),
-        'product'  => array(
+        'product'   => array(
             'text'       => 'Sản phẩm',
             'href'       => urlLink('product/product_list'),
             'sort_order' => 2,
         ),
-        'size'     => array(
-            'text'       => 'Kích thước',
-            'href'       => urlLink('product/size_list'),
+        'color'     => array(
+            'text'       => 'Màu',
+            'href'       => urlLink('product/color_list'),
             'sort_order' => 3,
+        ),
+        'attribute' => array(
+            'text'       => 'Thuộc tính',
+            'href'       => urlLink('product/attribute_list'),
+            'sort_order' => 4,
         )
     ];
 

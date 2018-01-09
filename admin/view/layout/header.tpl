@@ -33,9 +33,36 @@
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="resources/assets/admin/css/common.css">
+
+    <!-- jQuery 3 -->
+    <script src="resources/assets/bower/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="resources/assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Sparkline -->
+    <script src="resources/assets/bower/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="resources/assets/bower/moment/min/moment.min.js"></script>
+    <script src="resources/assets/bower/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="resources/assets/bower/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="resources/assets/bower/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="resources/assets/bower/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="resources/assets/bower/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="resources/assets/bower/admin-lte/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="resources/assets/bower/admin-lte/dist/js/demo.js"></script>
+    <script src="resources/assets/admin/js/ckfinder/ckfinder.js"></script>
+    <script>
+        var dir_sub = '<?php echo DIR_SUB; ?>';
+        var root_url = '<?php echo HTTP_ROOT; ?>';
+    </script>
+    <script src="resources/assets/admin/js/common.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

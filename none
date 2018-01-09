@@ -18,3 +18,8 @@ I: Connecting to configured address/port: localhost:9000.
 E: Time-out connecting to client. :-(
 Log closed at 2018-01-08 09:38:43
 
+Log opened at 2018-01-08 19:55:10
+I: Connecting to configured address/port: 127.0.0.1:9000.
+E: Time-out connecting to client. :-(
+Log closed at 2018-01-08 19:55:10
+
