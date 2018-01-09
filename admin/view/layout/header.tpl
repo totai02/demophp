@@ -64,8 +64,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="resources/assets/bower/admin-lte/dist/img/user2-160x160.jpg" class="img-circle"
-                         alt="User Image">
+                    <img src="resources/assets/bower/admin-lte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?php echo $username; ?></p>
@@ -84,23 +83,59 @@
             </form>
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">ADMINISTRATION</li>
-                <li><a href="<?php echo urlLink('common/dashboard'); ?>"><i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span></a></li>
-                <li><a href="#"><i class="fa fa-archive"></i> <span>File Manager</span></a></li>
-                <li><a href="#"><i class="fa fa-exclamation-circle"></i> <span>Notification</span></a></li>
-                <li><a href="#"><i class="fa fa-home"></i> <span>Departments</span></a></li>
-                <li><a href="#"><i class="fa fa-bar-chart"></i> <span>Statistical</span></a></li>
-                <li><a href="#"><i class="fa fa-trademark"></i> <span>Categorys</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>Products</span></a></li>
-                <li><a href="<?php echo urlLink('setting/setting') ?>"><i class="fa fa-cogs"></i> <span>Settings</span></a>
-                </li>
-                <li class="header">USER</li>
-                <li><a href="<?php echo urlLink('user/user_group_list');?>"><i class="fa fa-users"></i> <span>User Group</span></a></li>
-                <li><a href="<?php echo urlLink('user/user_list');?>"><i class="fa fa-user"></i> <span>User List</span></a></li>
-                <li><a href="<?php echo urlLink('auth/logout'); ?>"><i class="fa fa-sign-out"></i>
-                        <span>Logout</span></a></li>
+            <ul class="sidebar-menu" id="menu" data-widget="tree">
+                <li class="header">MAIN NAVIGATION</li>
+                <?php foreach ($menu_items as $id => $item) { ?>
+                    <?php if (isset($item['children'])) { ?>
+                        <li class="treeview" id="m_<?php echo $item['id']; ?>">
+                            <a href="<?php echo $item['href']; ?>">
+                                <i class="fa <?php echo $item['icon']; ?>"></i> <span><?php echo $item['text']; ?></span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <?php foreach ($item['children'] as $child) { ?>
+                                    <?php if (isset($child['children'])) { ?>
+                                        <li class="treeview">
+                                            <a href="<?php echo $child['href']; ?>">
+                                                <i class="fa fa-circle-o"></i> <?php echo $child['text']; ?>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <?php foreach ($child['children'] as $grandChild) { ?>
+                                                    <li>
+                                                        <a href="<?php echo $grandChild['href']; ?>">
+                                                            <i class="fa fa-circle-o"></i> <?php echo $grandChild['text']; ?>
+                                                        </a>
+                                                    </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
+                                    <?php } else { ?>
+                                        <li>
+                                            <a href="<?php echo $child['href']; ?>">
+                                                <i class="fa fa-circle-o"></i> <?php echo $child['text']; ?>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php } else { ?>
+                        <li id="m_<?php echo $item['id']; ?>">
+                            <a href="<?php echo $item['href']; ?>">
+                                <i class="fa <?php echo $item['icon']; ?>"></i> <span><?php echo $item['text']; ?></span>
+                            </a>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+                <li class="header">LABELS</li>
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
