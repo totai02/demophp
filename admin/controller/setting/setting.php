@@ -7,7 +7,6 @@ $loader->model('setting/setting');
 $document->setTitle('Setting');
 
 $document->setBreadcrumb('Setting', urlLink('setting/setting'));
-$document->setBreadcrumb('Setting 2');
 
 $data['dashboard_url'] = urlLink('common/dashboard');
 

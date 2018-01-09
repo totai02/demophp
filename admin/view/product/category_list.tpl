@@ -7,7 +7,7 @@
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" class="form-horizontal" id="form-user-group">
             <div class="box box-success">
                 <div class="box-header">
-                    <h3 class="box-title">Danh sách nhóm tài khoản</h3>
+                    <h3 class="box-title">Danh sách danh mục</h3>
                 </div>
                 <div class="box-body">
                     <table class="table table-bordered">
