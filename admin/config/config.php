@@ -14,7 +14,7 @@ return array(
         'error/permission'
     ),
 
-    'limit_admin' => 20,
+    'limit_admin' => 10,
     'no_image'    => 'no_image.png',
     'filters'     => array(
         'name'     => 'Tên sản phẩm',
