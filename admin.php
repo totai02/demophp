@@ -3,19 +3,9 @@ session_start();
 
 error_reporting(E_ALL);
 
-define('DIR_SUB', '/');
+include_once ('admin/config/define.php');
 
-define('DIR_ROOT', $_SERVER['DOCUMENT_ROOT'] . DIR_SUB);
-define('DIR_APP', DIR_ROOT . 'admin/');
-define('DIR_SYSTEM', DIR_ROOT . 'system/');
-define('DIR_TEMPLATE', DIR_APP . 'view/');
-define('DIR_RESOURCES', DIR_ROOT . 'resources/');
-define('DIR_IMAGE', DIR_RESOURCES . 'upload/image/');
-
-define('HTTP_ROOT', 'http://' . $_SERVER['HTTP_HOST'] . DIR_SUB);
-define('HTTP_APP', HTTP_ROOT . 'admin.php');
-
-include_once(DIR_SYSTEM . 'config.php');
+include_once(DIR_SYSTEM . 'config/database.php');
 include_once(DIR_SYSTEM . 'bootstrap.php');
 
 // init loader
@@ -30,7 +20,7 @@ $user = new User();
 // init config
 $config = new Config();
 
-$query = $db->query("SELECT * FROM " . DB_PREFIX . "setting WHERE code = 'config'");
+$query = $db->query("SELECT * FROM " . DB_PREFIX . "setting");
 
 foreach ($query->rows as $result) {
     if ($result['json']) {

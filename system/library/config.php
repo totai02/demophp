@@ -6,16 +6,26 @@ class Config
 
     public function __construct()
     {
+        $default = include_once (DIR_SYSTEM . 'config/default.php');
+
+        foreach ($default as $key => $value){
+            $this->set('default.' . $key, $value);
+        }
+
         $files = glob(DIR_APP . 'config/*.php');
 
         foreach ($files as $file) {
-            $item = include_once($file);
+            $basename = basename($file, '.php');
 
-            foreach ($item as $key => $value) {
-                $this->set('local.' . basename($file, '.php') . '.' . $key, $value);
+            if ($basename !== 'define') {
+                $item = include_once($file);
+
+                foreach ($item as $key => $value) {
+                    $this->set('local.' . $basename . '.' . $key, $value);
+                }
+
+                unset($item);
             }
-
-            unset($item);
         }
     }
 

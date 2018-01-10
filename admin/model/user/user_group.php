@@ -56,3 +56,33 @@ function getTotalUserGroup($data = array())
 
     return $query->row['total'];
 }
+
+function addPermission($user_group_id, $type, $route)
+{
+    global $db;
+
+    $user_group_query = $db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "user_group WHERE user_group_id = '" . (int)$user_group_id . "'");
+
+    if ($user_group_query->num_rows) {
+        $data = json_decode($user_group_query->row['permission'], true);
+
+        $data[$type][] = $route;
+
+        $db->query("UPDATE " . DB_PREFIX . "user_group SET permission = '" . $db->escape(json_encode($data)) . "' WHERE user_group_id = '" . (int)$user_group_id . "'");
+    }
+}
+
+function removePermission($user_group_id, $type, $route)
+{
+    global $db;
+
+    $user_group_query = $db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "user_group WHERE user_group_id = '" . (int)$user_group_id . "'");
+
+    if ($user_group_query->num_rows) {
+        $data = json_decode($user_group_query->row['permission'], true);
+
+        $data[$type] = array_diff($data[$type], array($route));
+
+        $db->query("UPDATE " . DB_PREFIX . "user_group SET permission = '" . $db->escape(json_encode($data)) . "' WHERE user_group_id = '" . (int)$user_group_id . "'");
+    }
+}
