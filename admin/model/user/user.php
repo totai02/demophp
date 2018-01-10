@@ -2,12 +2,12 @@
 
 function addUser($data)
 {
-    global $db;
+    global $db, $user;
 
     $db->insert('user', array(
         'user_group_id' => $data['user_group_id'],
         'username'      => $data['name'],
-        'password'      => $data['password'],
+        'password'      => $user->md5_Encode($data['password']),
         'status'        => $data['status'],
         'create_at'     => strtotime('now'),
         'update_at'     => strtotime('now')
