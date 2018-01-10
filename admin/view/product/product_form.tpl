@@ -1,4 +1,4 @@
-<?php echo $header ?>
+﻿<?php echo $header ?>
     <section class="content">
         <div class="text-right tools">
             <button type="submit" form="form-user-group" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Lưu</button>
