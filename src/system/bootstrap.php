@@ -10,4 +10,4 @@ include_once (DIR_SYSTEM . 'library/config.php');
 include_once (DIR_SYSTEM . 'library/user.php');
 include_once (DIR_SYSTEM . 'library/document.php');
 include_once (DIR_SYSTEM . 'library/pagination.php');
-require_once (DIR_SYSTEM . 'vendor/autoload.php');
+// require_once (DIR_SYSTEM . 'vendor/autoload.php');
