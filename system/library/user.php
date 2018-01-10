@@ -59,14 +59,20 @@ class User
         return $this->user_info['username'];
     }
 
+    public function getGroupId()
+    {
+        return $this->user_info['user_group_id'];
+    }
+
     function md5_Encode($string)
     {
         return md5($string);
     }
 
-    public function hasPermission($type, $route){
-        if(isset($this->permission[$type])){
-            if(in_array($route, $this->permission[$type])){
+    public function hasPermission($type, $route)
+    {
+        if (isset($this->permission[$type])) {
+            if (in_array($route, $this->permission[$type])) {
                 return true;
             }
         }
@@ -101,14 +107,15 @@ class User
         return $query->rows;
     }
 
-    protected function getPermission($user_group_id){
+    protected function getPermission($user_group_id)
+    {
         global $db;
 
         $query = $db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "user_group WHERE user_group_id = '" . $user_group_id . "'");
 
         $data = [];
 
-        if($query->num_rows) {
+        if ($query->num_rows) {
             $data = json_decode($query->row['permission'], true);
         }
 

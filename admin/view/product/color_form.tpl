@@ -30,8 +30,4 @@
             </div>
         </form>
     </section>
-    <script src="<?php echo assets_url('bower/ckeditor/ckeditor.js') ?>"></script>
-    <script>
-        CKEDITOR.replace('input-description');
-    </script>
 <?php echo $footer ?>

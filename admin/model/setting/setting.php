@@ -14,7 +14,6 @@ function editSetting($data, $code)
                 'value' => json_encode($value),
                 'json' => 1
             ));
-            // $db->query("INSERT INTO " . DB_PREFIX . "setting SET code = '" . $db->escape($code) . "', `key` = '" . $db->escape($key) . "', `value` = '" . $db->escape(json_encode($value)) . "', json = '1'");
         } else {
             $db->insert('setting', array(
                 'code' => $code,
@@ -22,7 +21,6 @@ function editSetting($data, $code)
                 'value' => $value,
                 'json' => 0
             ));
-            // $db->query("INSERT INTO " . DB_PREFIX . "setting SET code = '" . $db->escape($code) . "', `key` = '" . $db->escape($key) . "', `value` = '" . $db->escape($value) . "', json = '0'");
         }
     }
 }
