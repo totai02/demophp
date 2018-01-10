@@ -30,11 +30,13 @@ $filter_data = array(
 );
 
 if (isset($_GET['search']) && isset($_GET['key'])){
-    
-}
-$product_total = getTotalProduct();
 
-$results = getProducts($filter_data);
+} else {
+    $product_total = getTotalProduct();
+
+    $results = getProducts($filter_data);
+}
+
 
 foreach ($results as $result) {
     $data['products'][] = array(

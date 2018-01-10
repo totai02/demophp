@@ -2,7 +2,7 @@
     <section class="content">
         <div class="text-right tools">
             <a href="<?php echo $add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;Thêm</a>
-            <button type="button" onclick="confirm('Bạn có chắc xóa không ?') ? $('#form-user-group').submit() : '';" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Xóa</button>
+            <button type="button" onclick="confirm('Bạn có chắc xóa không ?') ? $('#form-attribute').submit() : '';" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Xóa</button>
         </div>
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" class="form-horizontal" id="form-attribute">
             <div class="box box-success">
