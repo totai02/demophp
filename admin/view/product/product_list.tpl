@@ -39,7 +39,13 @@
                                 <?php foreach ($filters as $key => $value) { ?>
                                     <li class="list-group-item">
                                         <div>
-                                            <input type="checkbox" name="filters[<?php echo $key ?>]" id="input_<?php echo $key; ?>" checked="true">&nbsp;&nbsp;<?php echo $value ?>
+                                            <?php if (strpos($_GET['search'], $key) !== false) { ?>
+                                            <input type="checkbox" name="filters[<?php echo $key ?>]" id="input_<?php echo $key; ?>" checked >&nbsp;&nbsp;<?php echo $value ?>
+                                            <?php }else{ ?>
+                                            <input type="checkbox" name="filters[<?php echo $key ?>]" id="input_<?php echo $key; ?>" >&nbsp;&nbsp;<?php echo $value ?>
+                                            <?php } ?>
+
+
                                         </div>
                                     </li>
                                 <?php } ?>

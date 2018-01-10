@@ -183,7 +183,7 @@ function getProducts($data = array())
             if (!empty($data['search']['category'])) {
                 $sql .= ", " . $db->tableName('product_to_category') . ", " . $db->tableName('category') . " WHERE " . $db->tableName('product') . ".product_id = " . $db->tableName('product_to_category') . ".product_id AND ";
                 $sql .= $db->tableName('product_to_category') . ".category_id = " . $db->tableName('category') . ".category_id AND ";
-                $filter[] = $db->tableName("category") . ".name LIKE " . $db->tableName("product") . ".name";
+                $filter[] = $db->tableName("category") . ".name LIKE " . $key;
             } else {
                 $sql .= " WHERE ";
             }
@@ -194,7 +194,6 @@ function getProducts($data = array())
     if (isset($data['start']) && isset($data['limit'])) {
         $sql .= " LIMIT " . (int)$data['start'] . ", " . (int)$data['limit'];
     }
-
 
     $query = $db->query($sql);
 
@@ -274,7 +273,7 @@ function getTotalProduct($data = array())
             if (!empty($data['search']['category'])) {
                 $sql .= ", " . $db->tableName('product_to_category') . ", " . $db->tableName('category') . " WHERE " . $db->tableName('product') . ".product_id = " . $db->tableName('product_to_category') . ".product_id AND ";
                 $sql .= $db->tableName('product_to_category') . ".category_id = " . $db->tableName('category') . ".category_id AND ";
-                $filter[] = $db->tableName("category") . ".name LIKE " . $db->tableName("product") . ".name";
+                $filter[] = $db->tableName("category") . ".name LIKE " . $key;
             } else {
                 $sql .= " WHERE ";
             }
