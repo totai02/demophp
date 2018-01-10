@@ -40,7 +40,7 @@ if (isMethod('post')) {
 
     if (!$error) {
         if (!empty($user_info)) {
-            //editUser($_GET['user_id'], $_POST);
+            editUser($_GET['user_id'], $_POST);
         } else {
             addUser($_POST);
         }

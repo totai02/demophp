@@ -38,6 +38,7 @@ foreach ($results as $result) {
         'username'      => $result['username'],
         'user_group_id' => $result['user_group_id'],
         'user_group'    => getUserGroup($result['user_group_id'])['name'],
+        'status'        => $result['status'],
         'edit'          => urlLink('user/user_form', 'user_id=' . $result['user_id'] . $url)
     );
 }

@@ -22,15 +22,40 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-12" for="input-name">Mật khẩu mới</label>
-                        <div class="col-sm-12">
-                            <input type="text" name="password" class="form-control" placeholder="Mật khẩu ( > 2 kí tự )" pattern="(.{2,})|()"/>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="row">
+                <div class="col-sm-6">
+                    <div class="box box-default collapsed-box">
+                        <div class="box-header">
+                            <h3 class="box-title">Tạo mật khẩu mới</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-sm-12">
+                                <input type="text" name="password" class="form-control" placeholder="Mật khẩu ( > 2 kí tự )" pattern="(.{2,})|()"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-default">
+                        <div class="box-header">
+                            <h3 class="box-title">Trạng thái</h3>
+                        </div>
+                        <div class="box-body">
+                            <select name="status" class="form-control" id="input-status">
+                                <?php if ($status) { ?>
+                                <option value="1" selected="selected">Bật</option>
+                                <option value="0">Tắt</option>
+                                <?php } else { ?>
+                                <option value="1">Bật</option>
+                                <option value="0" selected="selected">Tắt</option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-6">
                     <div class="box box-default">
                         <div class="box-header">
@@ -42,32 +67,14 @@
                                     <div class="checkbox">
                                         <label>
                                             <?php if ($user_group['user_group_id'] == $user_group_id) { ?>
-                                                <input type="radio" name="user_group_id" checked="checked"> <?php echo $user_group['name'] ?>
+                                                <input type="radio" name="user_group_id" value="<?php echo $user_group['user_group_id']?>" checked="checked"> <?php echo $user_group['name'] ?>
                                             <?php } else { ?>
-                                                <input type="radio" name="user_group_id"> <?php echo $user_group['name'] ?>
+                                                <input type="radio" name="user_group_id" value="<?php echo $user_group['user_group_id']?>" > <?php echo $user_group['name'] ?>
                                             <?php } ?>
                                         </label>
                                     </div>
                                 <?php } ?>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="box box-default">
-                        <div class="box-header">
-                            <h3 class="box-title">Trạng thái</h3>
-                        </div>
-                        <div class="box-body">
-                            <select name="status" class="form-control" id="input-status">
-                                <?php if ($status) { ?>
-                                    <option value="1" selected="selected">Bật</option>
-                                    <option value="0">Tắt</option>
-                                <?php } else { ?>
-                                    <option value="1">Bật</option>
-                                    <option value="0" selected="selected">Tắt</option>
-                                <?php } ?>
-                            </select>
                         </div>
                     </div>
                 </div>

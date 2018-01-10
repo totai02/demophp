@@ -16,15 +16,25 @@ function addUser($data)
 
 function editUser($user_id, $data)
 {
-    global $db;
+    global $db, $user;
 
-    $db->update('user', array(
-        'user_group_id' => $data['user_group_id'],
-        'username'      => $data['name'],
-        'password'      => $data['password'],
-        'status'        => $data['status'],
-        'update_at'     => strtotime('now')
-    ), " WHERE user_id = '" . $user_id . "'");
+    if (!empty($data['password'])){
+        $db->update('user', array(
+            'user_group_id' => $data['user_group_id'],
+            'username'      => $data['name'],
+            'password'      => $user->md5_Encode($data['password']),
+            'status'        => $data['status'],
+            'update_at'     => strtotime('now')
+        ), " WHERE user_id = '" . $user_id . "'");
+    } else {
+        $db->update('user', array(
+            'user_group_id' => $data['user_group_id'],
+            'username'      => $data['name'],
+            'status'        => $data['status'],
+            'update_at'     => strtotime('now')
+        ), " WHERE user_id = '" . $user_id . "'");
+    }
+
 
 }
 

@@ -18,6 +18,7 @@
                             </th>
                             <th class="text-left">Tên tài khoản</th>
                             <th class="text-center">Nhóm tài khoản</th>
+                            <th class="text-center">Trạng thái</th>
                             <th class="text-right">Hành động</th>
                         </tr>
                         </thead>
@@ -28,7 +29,14 @@
                                     <input type="checkbox" name="selected[]" value="<?php echo $user['user_id'] ?>" />
                                 </td>
                                 <td><?php echo $user['username'] ?></td>
-                                <td><?php echo $user['user_group'] ?></td>
+                                <td class="text-center"><?php echo $user['user_group'] ?></td>
+                                <td class="text-center">
+                                    <?php if($user['status']) { ?>
+                                        <i class="fa fa-check-circle text-success"></i>
+                                    <?php } else { ?>
+                                        <i class="fa fa-minus-circle text-danger"></i>
+                                    <?php } ?>
+                                    </td>
                                 <td class="text-right">
                                     <a href="<?php echo $user['edit'] ?>" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Sửa </a>
                                 </td>
