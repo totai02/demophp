@@ -15,6 +15,10 @@ final class DB
         $this->link->query("SET SQL_MODE = ''");
     }
 
+    function tableName($table){
+        return DB_PREFIX . $table;
+    }
+
     public function query($sql) {
         $query = $this->link->query($sql);
 

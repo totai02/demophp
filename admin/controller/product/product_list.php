@@ -29,8 +29,21 @@ $filter_data = array(
     'limit' => $config->get('local.config.limit_admin')
 );
 
-if (isset($_GET['search']) && isset($_GET['key'])){
+if (isset($_GET['key'])) {
 
+    if (isset($_GET['search'])){
+        foreach (explode(",", $_GET['search']) as $value){
+            $filter_data['search'][$value] = true;
+        }
+    }
+
+    $filter_data['key'] = $_GET['key'];
+
+    $product_total = getTotalProduct($filter_data);
+
+    $results = getProducts($filter_data);
+
+    $data['search_key'] = $_GET['key'];
 } else {
     $product_total = getTotalProduct();
 
@@ -49,6 +62,8 @@ foreach ($results as $result) {
 
 $data['add'] = urlLink('product/product_form' . $url);
 $data['delete'] = urlLink('product/product_delete' . $url);
+$data['pre_search'] = urlLink('product/product_list' . $url);
+
 
 $pagination = new Pagination();
 $pagination->total = $product_total;
