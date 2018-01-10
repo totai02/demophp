@@ -17,6 +17,9 @@ if (isset($_GET['page'])) {
     $page = 1;
 }
 
+
+$data['filters'] = $config->get('local.config.filters');
+
 $loader->model('product/product');
 
 $data['products'] = array();
@@ -26,6 +29,9 @@ $filter_data = array(
     'limit' => $config->get('local.config.limit_admin')
 );
 
+if (isset($_GET['search']) && isset($_GET['key'])){
+    
+}
 $product_total = getTotalProduct();
 
 $results = getProducts($filter_data);

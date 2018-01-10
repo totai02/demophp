@@ -194,6 +194,7 @@ if (isFile($data['image'])) {
     $data['thumb'] = noImage();
 }
 
+
 $data['no_image'] = noImage();
 
 // get image

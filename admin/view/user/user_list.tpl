@@ -17,6 +17,7 @@
                                 <input type="checkbox" onclick="$('input[name^=\'selected\']').prop('checked', this.checked)" />
                             </th>
                             <th class="text-left">Tên tài khoản</th>
+                            <th class="text-center">Nhóm tài khoản</th>
                             <th class="text-right">Hành động</th>
                         </tr>
                         </thead>
@@ -24,11 +25,12 @@
                         <?php foreach ($users as $user) {?>
                             <tr>
                                 <td class="text-center" style="width: 1px">
-                                    <input type="checkbox" name="selected[]" value="<?php echo $user_group['user_group_id'] ?>" />
+                                    <input type="checkbox" name="selected[]" value="<?php echo $user['user_id'] ?>" />
                                 </td>
                                 <td><?php echo $user['username'] ?></td>
+                                <td><?php echo $user['user_group'] ?></td>
                                 <td class="text-right">
-                                    <a href="<?php echo $user_group['edit'] ?>" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Sửa </a>
+                                    <a href="<?php echo $user['edit'] ?>" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Sửa </a>
                                 </td>
                             </tr>
                         <?php }?>

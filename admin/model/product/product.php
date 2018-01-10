@@ -178,6 +178,22 @@ function getProducts($data = array())
     return $query->rows;
 }
 
+function filterProducts($data = array())
+{
+    global $db;
+
+    $sql = "SELECT * FROM " . DB_PREFIX . "product";
+
+
+    if (isset($data['start']) && isset($data['limit'])) {
+        $sql .= " LIMIT " . (int)$data['start'] . ", " . (int)$data['limit'];
+    }
+
+    $query = $db->query($sql);
+
+    return $query->rows;
+}
+
 function getProduct($product_id)
 {
     global $db;

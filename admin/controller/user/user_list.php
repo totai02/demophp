@@ -30,16 +30,21 @@ $user_group_total = getTotalUser();
 
 $results = getUsers($filter_data);
 
+$loader->model('user/user_group');
+
 foreach ($results as $result) {
     $data['users'][] = array(
-        'user_id' => $result['user_group_id'],
-        'name'          => $result['name'],
+        'user_id'       => $result['user_id'],
+        'username'      => $result['username'],
+        'user_group_id' => $result['user_group_id'],
+        'user_group'    => getUserGroup($result['user_group_id'])['name'],
         'edit'          => urlLink('user/user_form', 'user_id=' . $result['user_id'] . $url)
     );
 }
 
 $data['add'] = urlLink('user/user_form' . $url);
 $data['delete'] = urlLink('user/user_delete' . $url);
+
 
 $pagination = new Pagination();
 $pagination->total = $user_group_total;

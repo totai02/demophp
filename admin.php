@@ -60,7 +60,7 @@ if (isset($_GET['route'])) {
         }
     }
 } else {
-    if (isset($_SESSION['user'])) {
+    if (isset($_SESSION['user_id'])) {
         $page = 'common/dashboard';
     } else {
         $page = 'auth/login';
