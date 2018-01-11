@@ -30,8 +30,8 @@ $filter_data = array(
 
 if (isset($_GET['key'])) {
 
-    if (isset($_GET['search'])){
-        foreach (explode(",", $_GET['search']) as $value){
+    if (isset($_GET['search'])) {
+        foreach (explode(",", $_GET['search']) as $value) {
             $filter_data['search'][$value] = true;
         }
     }
@@ -68,13 +68,13 @@ $pagination->total = $product_total;
 $pagination->page = $page;
 $pagination->limit = $config->get('local.config.limit_admin');
 $query_url = "";
-if (isset($_GET['search'])){
+if (isset($_GET['search'])) {
     $query_url .= "&search=" . $_GET['search'];
 }
-if (isset($_GET['key'])){
+if (isset($_GET['key'])) {
     $query_url .= "&key=" . $_GET['key'];
 }
-$pagination->url = urlLink('product/product_list',$query_url . '&page={page}');
+$pagination->url = urlLink('product/product_list', $query_url . '&page={page}');
 $data['pagination'] = $pagination->render();
 
 $data['header'] = $loader->controller('layout/header');

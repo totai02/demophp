@@ -45,5 +45,8 @@ if (isset($_GET['route'])) {
     $page = 'common/home';
 }
 
+// init cart
+$cart = new Cart();
+
 include_once(DIR_APP . 'controller/' . $page . '.php');
 

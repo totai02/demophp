@@ -66,7 +66,7 @@
                     <?php } else { ?>
                         <?php $class = 'col-sm-4'; ?>
                     <?php } ?>
-                    <div class="<?php echo $class; ?>">
+                    <div class="<?php echo $class; ?>" id="product">
                         <h1><?php echo $heading_title; ?></h1>
                         <?php if ($price) { ?>
                             <ul class="list-unstyled">
@@ -120,7 +120,7 @@
     <script type="text/javascript"><!--
         $('#button-cart').on('click', function () {
             $.ajax({
-                url: 'index.php?route=checkout/cart/add',
+                url: 'index.php?route=checkout/cart_add',
                 type: 'post',
                 data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
                 dataType: 'json',
@@ -135,22 +135,6 @@
                     $('.form-group').removeClass('has-error');
 
                     if (json['error']) {
-                        if (json['error']['option']) {
-                            for (i in json['error']['option']) {
-                                var element = $('#input-option' + i.replace('_', '-'));
-
-                                if (element.parent().hasClass('input-group')) {
-                                    element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                                } else {
-                                    element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                                }
-                            }
-                        }
-
-                        if (json['error']['recurring']) {
-                            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-                        }
-
                         // Highlight any found errors
                         $('.text-danger').parent().addClass('has-error');
                     }
@@ -162,7 +146,7 @@
 
                         $('html, body').animate({scrollTop: 0}, 'slow');
 
-                        $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                        // $('#cart > ul').load('index.php?route=common/cart/info ul li');
                     }
                 }
             });
