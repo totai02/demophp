@@ -46,12 +46,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12" for="input-image">Hình ảnh</label>
+                                <label class="col-sm-12" for="input-image">Ảnh đại diện</label>
                                 <div class="col-sm-12">
-                                    <div>
-                                        <img src="<?php echo $thumb; ?>" class="img-bordered"/>
-                                    </div>
-                                    <input type="text" name="image" value="<?php echo $image; ?>"/>
+                                    <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail img-bordered">
+                                        <img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $no_image; ?>"/>
+                                    </a>
+                                    <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image"/>
                                 </div>
                             </div>
                         </div>

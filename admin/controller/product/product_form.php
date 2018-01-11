@@ -2,9 +2,8 @@
 
 global $loader, $user, $document, $config;
 
-$document->setTitle('Nhóm tài khoản');
-$document->setBreadcrumb('Nhóm tài khoản');
-$document->setBreadcrumb('Thêm tài khoản');
+$document->setTitle('Sản phẩm');
+$document->setBreadcrumb('Sản phẩm');
 
 $url = '';
 

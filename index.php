@@ -1,11 +1,37 @@
 <?php
-
 session_start();
 
-define('DIR_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/');
-define('DIR_APP', DIR_ROOT . 'home/');
-define('DIR_SYSTEM', DIR_ROOT . 'system/');
-define('DIR_TEMPLATE', DIR_APP . 'view/');
+error_reporting(E_ALL);
+
+include_once('home/config/define.php');
+
+include_once(DIR_SYSTEM . 'config/database.php');
+include_once(DIR_SYSTEM . 'bootstrap.php');
+
+// init loader
+$loader = new Loader();
+
+// init db
+$db = new DB(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+// init user
+$user = new User();
+
+// init config
+$config = new Config();
+
+$query = $db->query("SELECT * FROM " . DB_PREFIX . "setting");
+
+foreach ($query->rows as $result) {
+    if ($result['json']) {
+        $config->set($result['key'], json_decode($result['value'], true));
+    } else {
+        $config->set($result['key'], $result['value']);
+    }
+}
+
+// init document
+$document = new Document();
 
 if (isset($_GET['route'])) {
     $route = $_GET['route'];
@@ -19,15 +45,5 @@ if (isset($_GET['route'])) {
     $page = 'common/home';
 }
 
-include_once (DIR_SYSTEM . 'config.php');
-include_once (DIR_SYSTEM . 'bootstrap.php');
-
-// init
-//$db = new mysqli(DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME);
-$loader = new Loader();
-
 include_once(DIR_APP . 'controller/' . $page . '.php');
 
-//$_SESSION['user_id'] = 1;
-//unset($_SESSION['user_id']);
-?>

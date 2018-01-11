@@ -14,13 +14,43 @@
                             <div class="form-group">
                                 <label class="col-sm-12" for="input-name">Tên Shop</label>
                                 <div class="col-sm-12">
-                                    <input type="text" name="config_name" value="<?php echo $config_name ?>" class="form-control" id="input-name" placeholder="Tên" />
+                                    <input type="text" name="config_name" value="<?php echo $config_name ?>" class="form-control" id="input-name" placeholder="Tên"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-12" for="input-owner">Chủ shop</label>
                                 <div class="col-sm-12">
-                                    <input type="text" name="config_owner" value="<?php echo $config_owner ?>" class="form-control" id="input-owner" placeholder="Tên" />
+                                    <input type="text" name="config_owner" value="<?php echo $config_owner ?>" class="form-control" id="input-owner" placeholder="Tên"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12" for="input-email">Email</label>
+                                <div class="col-sm-12">
+                                    <input type="text" name="config_email" value="<?php echo $config_email ?>" class="form-control" id="input-email" placeholder="Email"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12" for="input-phone">Số điện thoại</label>
+                                <div class="col-sm-12">
+                                    <input type="text" name="config_phone" value="<?php echo $config_phone ?>" class="form-control" id="input-phone" placeholder="Số điện thoại"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12" for="input-logo">Logo</label>
+                                <div class="col-sm-12">
+                                    <a href="" id="thumb-logo" data-toggle="image" class="img-thumbnail img-bordered">
+                                        <img src="<?php echo $thumb_logo; ?>" alt="" title="" data-placeholder="<?php echo $no_image; ?>"/>
+                                    </a>
+                                    <input type="hidden" name="config_logo" value="<?php echo $config_logo; ?>" id="input-logo"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12" for="input-icon">Icon</label>
+                                <div class="col-sm-12">
+                                    <a href="" id="thumb-icon" data-toggle="image" class="img-thumbnail img-bordered">
+                                        <img src="<?php echo $thumb_icon; ?>" alt="" title="" data-placeholder="<?php echo $no_image; ?>"/>
+                                    </a>
+                                    <input type="hidden" name="config_icon" value="<?php echo $config_icon; ?>" id="input-icon"/>
                                 </div>
                             </div>
                         </div>

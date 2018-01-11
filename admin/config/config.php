@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'Default_Controller' => DIR_ROOT . 'admin.php',
+    'default_controller' => DIR_ROOT . 'admin.php',
 
     'ignore' => array(
         'auth/forgot',

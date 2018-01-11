@@ -12,7 +12,7 @@
                 <div class="col-sm-12">
                     <div class="box box-default">
                         <div class="box-header">
-                            <h3 class="box-title">Tổng quan</h3>
+                            <h3 class="box-title">Sản phẩm khuyến mại</h3>
                         </div>
                         <div class="box-body">
                             <div class="form-group">
@@ -31,6 +31,12 @@
                                     <?php if ($error_height) { ?>
                                         <p class="text-danger"><?php echo $error_height; ?></p>
                                     <?php } ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12" for="input-limit">Giới hạn</label>
+                                <div class="col-sm-12">
+                                    <input type="text" name="product_sale_module[limit]" id="input-limit" value="<?php echo isset($module['limit']) ? $module['limit'] : '4'; ?>" class="form-control" placeholder="Giới hạn"/>
                                 </div>
                             </div>
                             <hr/>
@@ -65,7 +71,7 @@
                                                 </td>
                                                 <td class="text-left">
                                                     <select name="product_sale_module[layout][<?php echo $layout['code']; ?>][status]" class="form-control">
-                                                        <?php if (isset($module['layout']) && $position['code'] == $module['layout'][$layout['code']]['position']) { ?>
+                                                        <?php if (isset($module['layout']) && $module['layout'][$layout['code']]['status']) { ?>
                                                             <option value="1" selected="selected">Bật</option>
                                                             <option value="0">Tắt</option>
                                                         <?php } else { ?>
