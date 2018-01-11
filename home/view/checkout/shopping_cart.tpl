@@ -35,7 +35,7 @@
                                 <td class="text-left"><?php echo $product['price']; ?></td>
                                 <td class="text-left"><?php echo $product['quantity']; ?></td>
                                 <td class="text-right">
-                                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
+                                    <button type="button" onclick="cart.remove('<?php echo $product['key']; ?>');$(this).parents('tr').remove();" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
                                 </td>
                             </tr>
                         <?php } ?>

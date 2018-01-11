@@ -17,6 +17,7 @@ foreach ($cart->getProducts() as $product) {
 
     $data['products'][] = array(
         'product_id' => $product['product_id'],
+        'key'        => $product['key'],
         'name'       => $product['name'],
         'quantity'   => $product['quantity'],
         'price'      => $product['price'],
