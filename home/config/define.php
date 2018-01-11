@@ -1,6 +1,6 @@
 <?php
 
-define('DIR_SUB', '/sv-demophp/');
+define('DIR_SUB', '/');
 
 define('DIR_ROOT', $_SERVER['DOCUMENT_ROOT'] . DIR_SUB);
 define('DIR_APP', DIR_ROOT . 'home/');

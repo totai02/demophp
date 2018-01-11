@@ -44,6 +44,15 @@ function getMenu()
         )
     ];
 
+    $menu['module'] = [
+        'id'         => 'module',
+        'text'       => 'Mô-đun',
+        'icon'       => 'fa-bar-chart',
+        'href'       => urlLink('extension/module'),
+        'class'      => 'parent',
+        'sort_order' => 4
+    ];
+
     // Setting
     $menu['setting'] = [
         'id'         => 'setting',
