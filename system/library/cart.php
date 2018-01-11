@@ -21,7 +21,7 @@ class Cart
 
                 $product_id = $product['product_id'];
 
-                $product_query = $db->query("SELECT * FROM " . DB_PREFIX . "product p WHERE p.status = '1'");
+                $product_query = $db->query("SELECT * FROM " . DB_PREFIX . "product p WHERE p.product_id='" . $product_id . "' AND p.status = '1'");
 
                 if ($product_query->num_rows) {
                     $price = $product_query->row['price'];

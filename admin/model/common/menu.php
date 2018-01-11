@@ -83,6 +83,12 @@ function getMenu()
                 ),
             )
         ),
+        'logout' => array(
+            'text'       => 'Đăng xuất',
+            'href'       => urlLink('auth/logout'),
+            'sort_order' => 3,
+        ),
+
     ];
 
     /*// Tool
