@@ -1,5 +1,8 @@
-.idea
 resources/assets/bower/
 system/vendor/
-/resources/upload/image/cache/
-/resources/upload/image/data/.ckfinder/
+resources/upload/image/cache/
+resources/upload/image/data/.ckfinder/
+.idea
+portainer_data
+data
+docker-composer.yml

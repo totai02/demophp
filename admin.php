@@ -3,7 +3,7 @@ session_start();
 
 error_reporting(E_ALL);
 
-include_once ('admin/config/define.php');
+include_once('admin/config/define.php');
 
 include_once(DIR_SYSTEM . 'config/database.php');
 include_once(DIR_SYSTEM . 'bootstrap.php');
