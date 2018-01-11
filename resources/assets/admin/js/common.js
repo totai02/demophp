@@ -32,7 +32,7 @@ $(document).ready(function () {
                         var file = evt.data.files.first();
 
                         $(element).next().val(file.getUrl().replace(dir_sub + 'resources/upload/image/', ''));
-                        $(element).find('img').attr('src', root_url + 'resources/assets/admin/js/ckfinder/core/connector/php/connector.php?command=Thumbnail&lang=vi&type=' + file.attributes.folder.attributes.parent.attributes.name.replace("%20", " ") + '&currentFolder=' + file.attributes.folder.attributes.name.replace("%20", " ") + '&fileName=' + file.attributes.name.replace("%20", " ") + '&size=100x100');
+                        $(element).find('img').attr('src', root_url + 'resources/assets/admin/js/ckfinder/core/connector/php/connector.php?command=Thumbnail&lang=vi&type=' + file.attributes.folder.attributes.parent.attributes.name + '&currentFolder=' + file.attributes.folder.attributes.name + '&fileName=' + file.attributes.name + '&size=100x100');
                     });
                 }
             });

@@ -211,6 +211,8 @@ if (isset($_POST['product_image'])) {
 $data['product_images'] = array();
 
 foreach ($product_images as $product_image) {
+    $product_image = str_replace('%20', ' ', $product_image);
+
     if (isFile($product_image['image'])) {
         $thumb = resize($product_image['image'], 100, 100);
     } else {
