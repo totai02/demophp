@@ -12,7 +12,7 @@ $data['breadcrumbs'][] = array(
 $loader->model('product/category');
 $loader->model('product/product');
 $loader->model('tool/image');
-var_dump($_SESSION);
+
 if (isset($_GET['path'])) {
     $path = '';
 

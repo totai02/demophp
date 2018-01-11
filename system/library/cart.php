@@ -26,8 +26,8 @@ class Cart
                 if ($product_query->num_rows) {
                     $price = $product_query->row['price'];
 
-                    // Product Specials
-                    $product_sale_query = $db->query("SELECT price FROM " . DB_PREFIX . "product_sale WHERE product_id = '" . (int)$product_id . "' AND ((date_start = '0' OR DATE(FROM_UNIXTIME(ps.from_at)) < DATE(NOW())) AND (date_end = '0' OR DATE(FROM_UNIXTIME(ps.to_at)) > DATE(NOW()))) ORDER BY price ASC LIMIT 1");
+                    // Product sale
+                    $product_sale_query = $db->query("SELECT price FROM " . DB_PREFIX . "product_sale ps WHERE product_id = '" . (int)$product_id . "' AND ((from_at = '0' OR DATE(FROM_UNIXTIME(ps.from_at)) < DATE(NOW())) AND (to_at = '0' OR DATE(FROM_UNIXTIME(ps.to_at)) > DATE(NOW()))) ORDER BY price ASC LIMIT 1");
 
                     if ($product_sale_query->num_rows) {
                         $price = $product_sale_query->row['price'];
@@ -39,8 +39,6 @@ class Cart
                         'name'       => $product_query->row['name'],
                         'image'      => $product_query->row['image'],
                         'quantity'   => $quantity,
-                        'minimum'    => $product_query->row['minimum'],
-                        'subtract'   => $product_query->row['subtract'],
                         'price'      => $price,
                     );
                 } else {

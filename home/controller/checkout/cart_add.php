@@ -27,8 +27,6 @@ if ($product_info) {
         $json['success'] = sprintf('Thêm sản phẩm vào giỏ hàng thành công', urlLink('product/product', 'product_id=' . $_POST['product_id']), $product_info['name'], urlLink('checkout/cart'));
 
         // Totals
-        $loader->model('extension/extension');
-
         $total_data = array();
         $total = 0;
 
