@@ -1,8 +1,8 @@
-*/**/.idea
-src/resources/assets/bower/
-src/system/vendor/
-src/resources/upload/image/cache/
-src/resources/upload/image/data/.ckfinder/
+resources/assets/bower/
+system/vendor/
+resources/upload/image/cache/
+resources/upload/image/data/.ckfinder/
 .idea
 portainer_data
 data
+docker-composer.yml
