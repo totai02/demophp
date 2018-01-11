@@ -188,6 +188,8 @@ if (isset($_POST['image'])) {
     $data['image'] = '';
 }
 
+$data['image'] = str_replace('%20', ' ', $data['image']);
+
 if (isFile($data['image'])) {
     $data['thumb'] = resize($data['image'], 100, 100);
 } else {

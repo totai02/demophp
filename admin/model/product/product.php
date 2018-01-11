@@ -76,6 +76,7 @@ function editProduct($product_id, $data)
 {
     global $db;
 
+
     $db->update('product', array(
         'name'        => $data['name'],
         'description' => $data['description'],
