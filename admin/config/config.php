@@ -15,5 +15,10 @@ return array(
     ),
 
     'limit_admin' => 10,
-    'no_image'    => 'no_image.png'
+    'no_image'    => 'no_image.png',
+    'filters'     => array(
+        'name'     => 'Tên sản phẩm',
+        'tag'      => 'Tag',
+        'category' => 'Danh mục'
+    )
 );

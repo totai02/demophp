@@ -2,12 +2,12 @@
 
 function addUser($data)
 {
-    global $db;
+    global $db, $user;
 
     $db->insert('user', array(
         'user_group_id' => $data['user_group_id'],
         'username'      => $data['name'],
-        'password'      => $data['password'],
+        'password'      => $user->md5_Encode($data['password']),
         'status'        => $data['status'],
         'create_at'     => strtotime('now'),
         'update_at'     => strtotime('now')
@@ -16,9 +16,26 @@ function addUser($data)
 
 function editUser($user_id, $data)
 {
-    global $db;
+    global $db, $user;
 
-    $db->query("UPDATE " . DB_PREFIX . "user SET `user_group_id` = '" . $db->escape($data['user_group_id']) . "', `username` = '" . $db->escape($data['username']) . "', `password` = '" . $db->escape($data['password']) . "', `status` = '" . $db->escape($data['status']) . "', `create_at` = '" . $db->escape($data['create_at']) . "', `update_at` = '" . $db->escape($data['update_at']) . "' WHERE user_id = '" . $user_id . "'");
+    if (!empty($data['password'])){
+        $db->update('user', array(
+            'user_group_id' => $data['user_group_id'],
+            'username'      => $data['name'],
+            'password'      => $user->md5_Encode($data['password']),
+            'status'        => $data['status'],
+            'update_at'     => strtotime('now')
+        ), " WHERE user_id = '" . $user_id . "'");
+    } else {
+        $db->update('user', array(
+            'user_group_id' => $data['user_group_id'],
+            'username'      => $data['name'],
+            'status'        => $data['status'],
+            'update_at'     => strtotime('now')
+        ), " WHERE user_id = '" . $user_id . "'");
+    }
+
+
 }
 
 function deleteUser($user_id)

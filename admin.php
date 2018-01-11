@@ -3,7 +3,7 @@ session_start();
 
 error_reporting(E_ALL);
 
-include_once ('admin/config/define.php');
+include_once('admin/config/define.php');
 
 include_once(DIR_SYSTEM . 'config/database.php');
 include_once(DIR_SYSTEM . 'bootstrap.php');
@@ -50,7 +50,7 @@ if (isset($_GET['route'])) {
         }
     }
 } else {
-    if (isset($_SESSION['user'])) {
+    if (isset($_SESSION['user_id'])) {
         $page = 'common/dashboard';
     } else {
         $page = 'auth/login';

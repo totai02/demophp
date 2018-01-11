@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 11, 2018 at 02:53 AM
--- Server version: 5.6.37
--- PHP Version: 5.5.38
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th1 10, 2018 lúc 08:49 PM
+-- Phiên bản máy phục vụ: 10.1.28-MariaDB
+-- Phiên bản PHP: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `demo_shop`
+-- Cơ sở dữ liệu: `demo_shop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_attribute`
+-- Cấu trúc bảng cho bảng `tt_attribute`
 --
 
 CREATE TABLE `tt_attribute` (
@@ -34,7 +34,7 @@ CREATE TABLE `tt_attribute` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_attribute`
+-- Đang đổ dữ liệu cho bảng `tt_attribute`
 --
 
 INSERT INTO `tt_attribute` (`attribute_id`, `name`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `tt_attribute` (`attribute_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_category`
+-- Cấu trúc bảng cho bảng `tt_category`
 --
 
 CREATE TABLE `tt_category` (
@@ -68,7 +68,7 @@ CREATE TABLE `tt_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_category`
+-- Đang đổ dữ liệu cho bảng `tt_category`
 --
 
 INSERT INTO `tt_category` (`category_id`, `parent_id`, `name`, `description`, `image`, `status`, `create_at`, `update_at`) VALUES
@@ -86,7 +86,7 @@ INSERT INTO `tt_category` (`category_id`, `parent_id`, `name`, `description`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_color`
+-- Cấu trúc bảng cho bảng `tt_color`
 --
 
 CREATE TABLE `tt_color` (
@@ -95,7 +95,7 @@ CREATE TABLE `tt_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_color`
+-- Đang đổ dữ liệu cho bảng `tt_color`
 --
 
 INSERT INTO `tt_color` (`color_id`, `name`) VALUES
@@ -116,7 +116,26 @@ INSERT INTO `tt_color` (`color_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_order`
+-- Cấu trúc bảng cho bảng `tt_extension`
+--
+
+CREATE TABLE `tt_extension` (
+  `extension_id` int(11) NOT NULL,
+  `type` varchar(32) NOT NULL,
+  `code` varchar(32) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+--
+-- Đang đổ dữ liệu cho bảng `tt_extension`
+--
+
+INSERT INTO `tt_extension` (`extension_id`, `type`, `code`) VALUES
+(2, 'module', 'product_sale');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tt_order`
 --
 
 CREATE TABLE `tt_order` (
@@ -132,7 +151,7 @@ CREATE TABLE `tt_order` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_order_product`
+-- Cấu trúc bảng cho bảng `tt_order_product`
 --
 
 CREATE TABLE `tt_order_product` (
@@ -146,7 +165,7 @@ CREATE TABLE `tt_order_product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_product`
+-- Cấu trúc bảng cho bảng `tt_product`
 --
 
 CREATE TABLE `tt_product` (
@@ -163,7 +182,7 @@ CREATE TABLE `tt_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_product`
+-- Đang đổ dữ liệu cho bảng `tt_product`
 --
 
 INSERT INTO `tt_product` (`product_id`, `name`, `description`, `tag`, `image`, `price`, `status`, `viewed`, `create_at`, `update_at`) VALUES
@@ -223,7 +242,7 @@ INSERT INTO `tt_product` (`product_id`, `name`, `description`, `tag`, `image`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_product_attribute`
+-- Cấu trúc bảng cho bảng `tt_product_attribute`
 --
 
 CREATE TABLE `tt_product_attribute` (
@@ -234,7 +253,7 @@ CREATE TABLE `tt_product_attribute` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_product_attribute`
+-- Đang đổ dữ liệu cho bảng `tt_product_attribute`
 --
 
 INSERT INTO `tt_product_attribute` (`product_id`, `attribute_id`, `description`, `sort_order`) VALUES
@@ -683,7 +702,7 @@ INSERT INTO `tt_product_attribute` (`product_id`, `attribute_id`, `description`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_product_color`
+-- Cấu trúc bảng cho bảng `tt_product_color`
 --
 
 CREATE TABLE `tt_product_color` (
@@ -693,7 +712,7 @@ CREATE TABLE `tt_product_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_product_color`
+-- Đang đổ dữ liệu cho bảng `tt_product_color`
 --
 
 INSERT INTO `tt_product_color` (`product_id`, `color_id`, `count`) VALUES
@@ -810,7 +829,7 @@ INSERT INTO `tt_product_color` (`product_id`, `color_id`, `count`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_product_image`
+-- Cấu trúc bảng cho bảng `tt_product_image`
 --
 
 CREATE TABLE `tt_product_image` (
@@ -819,7 +838,7 @@ CREATE TABLE `tt_product_image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_product_image`
+-- Đang đổ dữ liệu cho bảng `tt_product_image`
 --
 
 INSERT INTO `tt_product_image` (`product_id`, `image`) VALUES
@@ -858,7 +877,7 @@ INSERT INTO `tt_product_image` (`product_id`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_product_sale`
+-- Cấu trúc bảng cho bảng `tt_product_sale`
 --
 
 CREATE TABLE `tt_product_sale` (
@@ -871,7 +890,7 @@ CREATE TABLE `tt_product_sale` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_product_to_category`
+-- Cấu trúc bảng cho bảng `tt_product_to_category`
 --
 
 CREATE TABLE `tt_product_to_category` (
@@ -880,7 +899,7 @@ CREATE TABLE `tt_product_to_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_product_to_category`
+-- Đang đổ dữ liệu cho bảng `tt_product_to_category`
 --
 
 INSERT INTO `tt_product_to_category` (`product_id`, `category_id`) VALUES
@@ -934,7 +953,7 @@ INSERT INTO `tt_product_to_category` (`product_id`, `category_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_setting`
+-- Cấu trúc bảng cho bảng `tt_setting`
 --
 
 CREATE TABLE `tt_setting` (
@@ -946,7 +965,7 @@ CREATE TABLE `tt_setting` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_setting`
+-- Đang đổ dữ liệu cho bảng `tt_setting`
 --
 
 INSERT INTO `tt_setting` (`setting_id`, `code`, `key`, `value`, `json`) VALUES
@@ -956,7 +975,7 @@ INSERT INTO `tt_setting` (`setting_id`, `code`, `key`, `value`, `json`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_user`
+-- Cấu trúc bảng cho bảng `tt_user`
 --
 
 CREATE TABLE `tt_user` (
@@ -970,17 +989,20 @@ CREATE TABLE `tt_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_user`
+-- Đang đổ dữ liệu cho bảng `tt_user`
 --
 
 INSERT INTO `tt_user` (`user_id`, `user_group_id`, `username`, `password`, `status`, `create_at`, `update_at`) VALUES
 (1, 1, 'taitt', 'a3f0bec59cebeb60553ec80bbfd5dfdf', 1, '1512386860', '1512386860'),
-(2, 2, 'truongnx', 'a3f0bec59cebeb60553ec80bbfd5dfdf', 1, '1512386860', '1512386860');
+(2, 5, 'truongnx', 'a3f0bec59cebeb60553ec80bbfd5dfdf', 1, '1512386860', '1512386860'),
+(6, 5, 'tuannda', '31acb956d58a93c45d5fbd31775146f1', 1, '1515613688', '1515613688'),
+(7, 5, 'vudb', '9c2c8cc313d4ed233d9880f06cbfdcd7', 1, '1515613714', '1515613714'),
+(8, 5, 'thanhpv', 'e10adc3949ba59abbe56e057f20f883e', 1, '1515613738', '1515613738');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tt_user_group`
+-- Cấu trúc bảng cho bảng `tt_user_group`
 --
 
 CREATE TABLE `tt_user_group` (
@@ -990,109 +1012,129 @@ CREATE TABLE `tt_user_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tt_user_group`
+-- Đang đổ dữ liệu cho bảng `tt_user_group`
 --
 
 INSERT INTO `tt_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'admin', '{\"access\":[\"common\\/dashboard\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\",\"user\\/user_list\"],\"modify\":[\"common\\/dashboard\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\",\"user\\/user_list\"]}'),
-(5, 'member', '{\"access\":[\"common\\/dashboard\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\",\"user\\/user_group_list\",\"user\\/user_list\"],\"modify\":[\"common\\/dashboard\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\"]}');
+(1, 'admin', '{\"access\":[\"common\\/dashboard\",\"extension\\/module\",\"module\\/product_latest\",\"module\\/product_sale\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\",\"user\\/user_delete\",\"user\\/user_form\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\",\"user\\/user_list\"],\"modify\":[\"common\\/dashboard\",\"extension\\/module\",\"module\\/product_latest\",\"module\\/product_sale\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\",\"user\\/user_delete\",\"user\\/user_form\",\"user\\/user_group_delete\",\"user\\/user_group_form\",\"user\\/user_group_list\",\"user\\/user_list\"]}'),
+(5, 'member', '{\"access\":[\"common\\/dashboard\",\"extension\\/module\",\"module\\/product_latest\",\"module\\/product_sale\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\",\"user\\/user_group_list\",\"user\\/user_list\"],\"modify\":[\"common\\/dashboard\",\"extension\\/module\",\"module\\/product_latest\",\"module\\/product_sale\",\"product\\/attribute_delete\",\"product\\/attribute_form\",\"product\\/attribute_list\",\"product\\/category_delete\",\"product\\/category_form\",\"product\\/category_list\",\"product\\/color_delete\",\"product\\/color_form\",\"product\\/color_list\",\"product\\/product_delete\",\"product\\/product_form\",\"product\\/product_list\",\"setting\\/setting\"]}');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tt_attribute`
+-- Chỉ mục cho bảng `tt_attribute`
 --
 ALTER TABLE `tt_attribute`
   ADD PRIMARY KEY (`attribute_id`) USING BTREE;
 
 --
--- Indexes for table `tt_category`
+-- Chỉ mục cho bảng `tt_category`
 --
 ALTER TABLE `tt_category`
   ADD PRIMARY KEY (`category_id`) USING BTREE;
 
 --
--- Indexes for table `tt_color`
+-- Chỉ mục cho bảng `tt_color`
 --
 ALTER TABLE `tt_color`
   ADD PRIMARY KEY (`color_id`) USING BTREE;
 
 --
--- Indexes for table `tt_order`
+-- Chỉ mục cho bảng `tt_extension`
+--
+ALTER TABLE `tt_extension`
+  ADD PRIMARY KEY (`extension_id`) USING BTREE;
+
+--
+-- Chỉ mục cho bảng `tt_order`
 --
 ALTER TABLE `tt_order`
   ADD PRIMARY KEY (`order_id`) USING BTREE;
 
 --
--- Indexes for table `tt_product`
+-- Chỉ mục cho bảng `tt_product`
 --
 ALTER TABLE `tt_product`
   ADD PRIMARY KEY (`product_id`) USING BTREE;
 
 --
--- Indexes for table `tt_setting`
+-- Chỉ mục cho bảng `tt_setting`
 --
 ALTER TABLE `tt_setting`
   ADD PRIMARY KEY (`setting_id`) USING BTREE;
 
 --
--- Indexes for table `tt_user`
+-- Chỉ mục cho bảng `tt_user`
 --
 ALTER TABLE `tt_user`
   ADD PRIMARY KEY (`user_id`) USING BTREE;
 
 --
--- Indexes for table `tt_user_group`
+-- Chỉ mục cho bảng `tt_user_group`
 --
 ALTER TABLE `tt_user_group`
   ADD PRIMARY KEY (`user_group_id`) USING BTREE;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tt_attribute`
+-- AUTO_INCREMENT cho bảng `tt_attribute`
 --
 ALTER TABLE `tt_attribute`
   MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
--- AUTO_INCREMENT for table `tt_category`
+-- AUTO_INCREMENT cho bảng `tt_category`
 --
 ALTER TABLE `tt_category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `tt_color`
+-- AUTO_INCREMENT cho bảng `tt_color`
 --
 ALTER TABLE `tt_color`
   MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `tt_order`
+-- AUTO_INCREMENT cho bảng `tt_extension`
+--
+ALTER TABLE `tt_extension`
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `tt_order`
 --
 ALTER TABLE `tt_order`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `tt_product`
+-- AUTO_INCREMENT cho bảng `tt_product`
 --
 ALTER TABLE `tt_product`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
 --
--- AUTO_INCREMENT for table `tt_setting`
+-- AUTO_INCREMENT cho bảng `tt_setting`
 --
 ALTER TABLE `tt_setting`
   MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
--- AUTO_INCREMENT for table `tt_user`
+-- AUTO_INCREMENT cho bảng `tt_user`
 --
 ALTER TABLE `tt_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
--- AUTO_INCREMENT for table `tt_user_group`
+-- AUTO_INCREMENT cho bảng `tt_user_group`
 --
 ALTER TABLE `tt_user_group`
-  MODIFY `user_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
+  MODIFY `user_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

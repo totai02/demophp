@@ -76,6 +76,7 @@ function editProduct($product_id, $data)
 {
     global $db;
 
+
     $db->update('product', array(
         'name'        => $data['name'],
         'description' => $data['description'],
@@ -167,7 +168,29 @@ function getProducts($data = array())
 {
     global $db;
 
-    $sql = "SELECT * FROM " . DB_PREFIX . "product";
+    $sql = "SELECT " . $db->tableName('product') . ".* FROM " . DB_PREFIX . "product";
+
+
+    if (!empty($data['key'])) {
+        $key = "'%" . $data['key'] . "%'";
+        $filter = array();
+        if (!empty($data['search'])) {
+            if (!empty($data['search']['name'])) {
+                $filter[] = $db->tableName('product') . ".name LIKE " . $key;
+            }
+            if (!empty($data['search']['tag'])) {
+                $filter[] = $db->tableName('product') . ".tag LIKE " . $key;
+            }
+            if (!empty($data['search']['category'])) {
+                $sql .= ", " . $db->tableName('product_to_category') . ", " . $db->tableName('category') . " WHERE " . $db->tableName('product') . ".product_id = " . $db->tableName('product_to_category') . ".product_id AND ";
+                $sql .= $db->tableName('product_to_category') . ".category_id = " . $db->tableName('category') . ".category_id AND ";
+                $filter[] = $db->tableName("category") . ".name LIKE " . $key;
+            } else {
+                $sql .= " WHERE ";
+            }
+        }
+        $sql .= " ( " . implode(' OR ', $filter) . " ) ";
+    }
 
     if (isset($data['start']) && isset($data['limit'])) {
         $sql .= " LIMIT " . (int)$data['start'] . ", " . (int)$data['limit'];
@@ -236,7 +259,30 @@ function getTotalProduct($data = array())
 {
     global $db;
 
-    $query = $db->query("SELECT COUNT(*) as total FROM " . DB_PREFIX . "product");
+    $sql = "SELECT COUNT(*) as total FROM " . DB_PREFIX . "product";
+
+    if (!empty($data['key'])) {
+        $key = "'%" . $data['key'] . "%'";
+        $filter = array();
+        if (!empty($data['search'])) {
+            if (!empty($data['search']['name'])) {
+                $filter[] = $db->tableName('product') . ".name LIKE " . $key;
+            }
+            if (!empty($data['search']['tag'])) {
+                $filter[] = $db->tableName('product') . ".tag LIKE " . $key;
+            }
+            if (!empty($data['search']['category'])) {
+                $sql .= ", " . $db->tableName('product_to_category') . ", " . $db->tableName('category') . " WHERE " . $db->tableName('product') . ".product_id = " . $db->tableName('product_to_category') . ".product_id AND ";
+                $sql .= $db->tableName('product_to_category') . ".category_id = " . $db->tableName('category') . ".category_id AND ";
+                $filter[] = $db->tableName("category") . ".name LIKE " . $key;
+            } else {
+                $sql .= " WHERE ";
+            }
+        }
+        $sql .= " ( " . implode(' OR ', $filter) . " ) ";
+    }
+
+    $query = $db->query($sql);
 
     return $query->row['total'];
 }

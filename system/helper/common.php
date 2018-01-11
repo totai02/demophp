@@ -5,6 +5,7 @@ function isMethod($method)
     return $_SERVER['REQUEST_METHOD'] === strtoupper($method);
 }
 
+
 function urlLink($route, $args = '')
 {
     $url = HTTP_APP . '?route=' . $route;
